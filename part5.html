@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang='vi'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>K30 Medical English – Part 5</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,Arial;max-width:900px;margin:auto;padding:16px}
+.q{border-bottom:1px solid #ddd;padding:14px 0}
+label{display:block;padding:6px 0}
+.correct{color:#0a8a0a;font-weight:600}
+.wrong{color:#c00;font-weight:600}
+.exp{display:none;background:#eef6ff;padding:10px;margin-top:8px;border-left:4px solid #0a84ff}
+.toolbar{position:sticky;top:0;background:#fff;padding:10px;border-bottom:1px solid #ddd}
+button{margin-right:10px;padding:8px 14px}
+</style>
+<script>
+let results = JSON.parse(localStorage.getItem('results')||'{}');
+function save(){localStorage.setItem('results', JSON.stringify(results));}
+
+function choose(q,sel,ans){
+ let key='p5-'+q;
+ if(results[key]) return;
+ results[key]=(sel===ans)?'correct':'wrong';
+ save();
+ document.querySelectorAll('input[name="q'+q+'"]').forEach(r=>r.disabled=true);
+ document.getElementById('l_'+q+'_'+sel).classList.add(sel===ans?'correct':'wrong');
+ document.getElementById('l_'+q+'_'+ans).classList.add('correct');
+ document.getElementById('exp_'+q).style.display='block';
+}
+function redoWrong(){
+ document.querySelectorAll('.q').forEach(q=>q.style.display='none');
+ for(let k in results){
+   if(results[k]=='wrong' && k.startsWith('p5-')){
+     let id=k.split('-')[1];
+     document.getElementById('q'+id).style.display='block';
+   }
+ }
+}
+function resetPart(){
+ for(let k in results){ if(k.startsWith('p5-')) delete results[k]; }
+ save(); location.reload();
+}
+</script></head><body>
+<div class='toolbar'><button onclick='redoWrong()'>Làm lại câu sai</button><button onclick='resetPart()'>Làm lại part</button></div>
+<h2>K30 Medical English – Part 5</h2>
+<div class='q' id='q1'><b>CÂU 121: A patient with blocked arteries may require _______.</b>
+<label id='l_1_B'><input type='radio' name='q1' onclick="choose(1,'B','C')">B. chemotherapy</label>
+<label id='l_1_C'><input type='radio' name='q1' onclick="choose(1,'C','C')">C. bypass surgery</label>
+<label id='l_1_A'><input type='radio' name='q1' onclick="choose(1,'A','C')">A. physiotherapy</label>
+<label id='l_1_D'><input type='radio' name='q1' onclick="choose(1,'D','C')">D. dialysis</label>
+<div class='exp' id='exp_1'><b>Đáp án đúng:</b> C<br></div></div>
+<div class='q' id='q2'><b>CÂU 122: Which blood cells are responsible for fighting infections?</b>
+<label id='l_2_C'><input type='radio' name='q2' onclick="choose(2,'C','B')">C. Platelets</label>
+<label id='l_2_B'><input type='radio' name='q2' onclick="choose(2,'B','B')">B. White</label>
+<label id='l_2_A'><input type='radio' name='q2' onclick="choose(2,'A','B')">A. Plasma</label>
+<label id='l_2_D'><input type='radio' name='q2' onclick="choose(2,'D','B')">D. Red</label>
+<div class='exp' id='exp_2'><b>Đáp án đúng:</b> B<br></div></div>
+<div class='q' id='q3'><b>CÂU 123: The doctor advised regular _______ to reduce stress.</b>
+<label id='l_3_D'><input type='radio' name='q3' onclick="choose(3,'D','B')">D. smoking</label>
+<label id='l_3_A'><input type='radio' name='q3' onclick="choose(3,'A','B')">A. caffeine</label>
+<label id='l_3_B'><input type='radio' name='q3' onclick="choose(3,'B','B')">B. exercise</label>
+<label id='l_3_C'><input type='radio' name='q3' onclick="choose(3,'C','B')">C. alcohol</label>
+<div class='exp' id='exp_3'><b>Đáp án đúng:</b> B<br></div></div>
+<div class='q' id='q4'><b>CÂU 124: The patient’s wound showed no signs of _______ after treatment.</b>
+<label id='l_4_C'><input type='radio' name='q4' onclick="choose(4,'C','B')">C. intubation</label>
+<label id='l_4_A'><input type='radio' name='q4' onclick="choose(4,'A','B')">A. inflammation</label>
+<label id='l_4_D'><input type='radio' name='q4' onclick="choose(4,'D','B')">D. incision</label>
+<label id='l_4_B'><input type='radio' name='q4' onclick="choose(4,'B','B')">B. infection</label>
+<div class='exp' id='exp_4'><b>Đáp án đúng:</b> B<br></div></div>
+<div class='q' id='q5'><b>CÂU 125: The patient was given antibiotics to fight the _______.</b>
+<label id='l_5_C'><input type='radio' name='q5' onclick="choose(5,'C','D')">C. accident</label>
+<label id='l_5_A'><input type='radio' name='q5' onclick="choose(5,'A','D')">A. fever</label>
+<label id='l_5_D'><input type='radio' name='q5' onclick="choose(5,'D','D')">D. infection</label>
+<label id='l_5_B'><input type='radio' name='q5' onclick="choose(5,'B','D')">B. symptom</label>
+<div class='exp' id='exp_5'><b>Đáp án đúng:</b> D<br></div></div>
+<div class='q' id='q6'><b>CÂU 126: The nurse placed the medication in a _______.</b>
+<label id='l_6_A'><input type='radio' name='q6' onclick="choose(6,'A','D')">A. stethoscope</label>
+<label id='l_6_B'><input type='radio' name='q6' onclick="choose(6,'B','D')">B. cuff</label>
+<label id='l_6_C'><input type='radio' name='q6' onclick="choose(6,'C','D')">C. scalpel</label>
+<label id='l_6_D'><input type='radio' name='q6' onclick="choose(6,'D','D')">D. syringe</label>
+<div class='exp' id='exp_6'><b>Đáp án đúng:</b> D<br></div></div>
+<div class='q' id='q7'><b>CÂU 127: The surgeon delayed the procedure _______ the patient’s blood pressure was too high.</b>
+<label id='l_7_B'><input type='radio' name='q7' onclick="choose(7,'B','A')">B. although</label>
+<label id='l_7_D'><input type='radio' name='q7' onclick="choose(7,'D','A')">D. but</label>
+<label id='l_7_A'><input type='radio' name='q7' onclick="choose(7,'A','A')">A. because</label>
+<label id='l_7_C'><input type='radio' name='q7' onclick="choose(7,'C','A')">C. while</label>
+<div class='exp' id='exp_7'><b>Đáp án đúng:</b> A<br></div></div>
+<div class='q' id='q8'><b>CÂU 128: The surgeon used a laparoscope to perform a minimally _______ procedure.</b>
+<label id='l_8_A'><input type='radio' name='q8' onclick="choose(8,'A','B')">A. diagnostic</label>
+<label id='l_8_C'><input type='radio' name='q8' onclick="choose(8,'C','B')">C. preventive</label>
+<label id='l_8_B'><input type='radio' name='q8' onclick="choose(8,'B','B')">B. invasive</label>
+<label id='l_8_D'><input type='radio' name='q8' onclick="choose(8,'D','B')">D. infectious</label>
+<div class='exp' id='exp_8'><b>Đáp án đúng:</b> B<br></div></div>
+<div class='q' id='q9'><b>CÂU 129: The surgeon asked the patient to sign the _______ form.</b>
+<label id='l_9_D'><input type='radio' name='q9' onclick="choose(9,'D','A')">D. transfer</label>
+<label id='l_9_A'><input type='radio' name='q9' onclick="choose(9,'A','A')">A. consent</label>
+<label id='l_9_B'><input type='radio' name='q9' onclick="choose(9,'B','A')">B. complaint</label>
+<label id='l_9_C'><input type='radio' name='q9' onclick="choose(9,'C','A')">C. referral</label>
+<div class='exp' id='exp_9'><b>Đáp án đúng:</b> A<br></div></div>
+<div class='q' id='q10'><b>CÂU 130: Which organ produces insulin?</b>
+<label id='l_10_C'><input type='radio' name='q10' onclick="choose(10,'C','B')">C. Kidney</label>
+<label id='l_10_A'><input type='radio' name='q10' onclick="choose(10,'A','B')">A. Liver</label>
+<label id='l_10_D'><input type='radio' name='q10' onclick="choose(10,'D','B')">D. Heart</label>
+<label id='l_10_B'><input type='radio' name='q10' onclick="choose(10,'B','B')">B. Pancreas</label>
+<div class='exp' id='exp_10'><b>Đáp án đúng:</b> B<br></div></div>
+<div class='q' id='q11'><b>CÂU 131: The doctor advised him to quit smoking to avoid _______ cancer.</b>
+<label id='l_11_B'><input type='radio' name='q11' onclick="choose(11,'B','A')">B. brain</label>
+<label id='l_11_A'><input type='radio' name='q11' onclick="choose(11,'A','A')">A. lung</label>
+<label id='l_11_D'><input type='radio' name='q11' onclick="choose(11,'D','A')">D. bone</label>
+<label id='l_11_C'><input type='radio' name='q11' onclick="choose(11,'C','A')">C. skin</label>
+<div class='exp' id='exp_11'><b>Đáp án đúng:</b> A<br></div></div>
+<div class='q' id='q12'><b>CÂU 132: The surgeon asked the nurse to pass the _______.</b>
+<label id='l_12_C'><input type='radio' name='q12' onclick="choose(12,'C','D')">C. cuff</label>
+<label id='l_12_A'><input type='radio' name='q12' onclick="choose(12,'A','D')">A. thermometer</label>
+<label id='l_12_D'><input type='radio' name='q12' onclick="choose(12,'D','D')">D. scalpel</label>
+<label id='l_12_B'><input type='radio' name='q12' onclick="choose(12,'B','D')">B. syringe</label>
+<div class='exp' id='exp_12'><b>Đáp án đúng:</b> D<br></div></div>
+<div class='q' id='q13'><b>CÂU 133: Oxygen is delivered to patients through a _______.</b>
+<label id='l_13_A'><input type='radio' name='q13' onclick="choose(13,'A','A')">A. mask</label>
+<label id='l_13_B'><input type='radio' name='q13' onclick="choose(13,'B','A')">B. monitor</label>
+<label id='l_13_D'><input type='radio' name='q13' onclick="choose(13,'D','A')">D. glove</label>
+<label id='l_13_C'><input type='radio' name='q13' onclick="choose(13,'C','A')">C. tube</label>
+<div class='exp' id='exp_13'><b>Đáp án đúng:</b> A<br></div></div>
+<div class='q' id='q14'><b>CÂU 134: The oncologist discussed the options for _______ therapy to shrink the tumor.</b>
+<label id='l_14_C'><input type='radio' name='q14' onclick="choose(14,'C','A')">C. antibiotic</label>
+<label id='l_14_B'><input type='radio' name='q14' onclick="choose(14,'B','A')">B. insulin</label>
+<label id='l_14_A'><input type='radio' name='q14' onclick="choose(14,'A','A')">A. radiation</label>
+<label id='l_14_D'><input type='radio' name='q14' onclick="choose(14,'D','A')">D. oxygen</label>
+<div class='exp' id='exp_14'><b>Đáp án đúng:</b> A<br></div></div>
+<div class='q' id='q15'><b>CÂU 135: A _______ is an imaging technique that uses magnetic fields.</b>
+<label id='l_15_D'><input type='radio' name='q15' onclick="choose(15,'D','A')">D. Ultrasound</label>
+<label id='l_15_B'><input type='radio' name='q15' onclick="choose(15,'B','A')">B. CT scan</label>
+<label id='l_15_C'><input type='radio' name='q15' onclick="choose(15,'C','A')">C. X-ray</label>
+<label id='l_15_A'><input type='radio' name='q15' onclick="choose(15,'A','A')">A. MRI</label>
+<div class='exp' id='exp_15'><b>Đáp án đúng:</b> A<br></div></div>
+<div class='q' id='q16'><b>CÂU 136: The doctor recommended regular _______ to maintain a healthy heart.</b>
+<label id='l_16_C'><input type='radio' name='q16' onclick="choose(16,'C','C')">C. exercise</label>
+<label id='l_16_B'><input type='radio' name='q16' onclick="choose(16,'B','C')">B. stress</label>
+<label id='l_16_A'><input type='radio' name='q16' onclick="choose(16,'A','C')">A. smoking</label>
+<label id='l_16_D'><input type='radio' name='q16' onclick="choose(16,'D','C')">D. alcohol</label>
+<div class='exp' id='exp_16'><b>Đáp án đúng:</b> C<br></div></div>
+<div class='q' id='q17'><b>CÂU 137: The physiotherapist developed a program to restore the patient’s muscle _______.</b>
+<label id='l_17_B'><input type='radio' name='q17' onclick="choose(17,'B','C')">B. diet</label>
+<label id='l_17_C'><input type='radio' name='q17' onclick="choose(17,'C','C')">C. strength</label>
+<label id='l_17_A'><input type='radio' name='q17' onclick="choose(17,'A','C')">A. pressure</label>
+<label id='l_17_D'><input type='radio' name='q17' onclick="choose(17,'D','C')">D. weight</label>
+<div class='exp' id='exp_17'><b>Đáp án đúng:</b> C<br></div></div>
+<div class='q' id='q18'><b>CÂU 138: The doctor ordered an MRI to investigate spinal _______.</b>
+<label id='l_18_C'><input type='radio' name='q18' onclick="choose(18,'C','C')">C. compression</label>
+<label id='l_18_B'><input type='radio' name='q18' onclick="choose(18,'B','C')">B. connection</label>
+<label id='l_18_D'><input type='radio' name='q18' onclick="choose(18,'D','C')">D. congestion</label>
+<label id='l_18_A'><input type='radio' name='q18' onclick="choose(18,'A','C')">A. collection</label>
+<div class='exp' id='exp_18'><b>Đáp án đúng:</b> C<br></div></div>
+<div class='q' id='q19'><b>CÂU 139: The pharmacist explained the possible _______ of the drug.</b>
+<label id='l_19_B'><input type='radio' name='q19' onclick="choose(19,'B','C')">B. strengths</label>
+<label id='l_19_C'><input type='radio' name='q19' onclick="choose(19,'C','C')">C. side effects</label>
+<label id='l_19_D'><input type='radio' name='q19' onclick="choose(19,'D','C')">D. colors</label>
+<label id='l_19_A'><input type='radio' name='q19' onclick="choose(19,'A','C')">A. doses</label>
+<div class='exp' id='exp_19'><b>Đáp án đúng:</b> C<br>Dược sĩ giải thích các _______ có thể xảy ra của thuốc.</div></div>
+<div class='q' id='q20'><b>CÂU 140: A person with diabetes must monitor their _______ regularly.</b>
+<label id='l_20_D'><input type='radio' name='q20' onclick="choose(20,'D','B')">D. pulse rate</label>
+<label id='l_20_B'><input type='radio' name='q20' onclick="choose(20,'B','B')">B. blood sugar</label>
+<label id='l_20_C'><input type='radio' name='q20' onclick="choose(20,'C','B')">C. lung capacity</label>
+<label id='l_20_A'><input type='radio' name='q20' onclick="choose(20,'A','B')">A. blood pressure</label>
+<div class='exp' id='exp_20'><b>Đáp án đúng:</b> B<br></div></div>
+<div class='q' id='q21'><b>CÂU 141: The doctor recommended a _______ diet for a patient.</b>
+<label id='l_21_C'><input type='radio' name='q21' onclick="choose(21,'C','D')">C. salty</label>
+<label id='l_21_D'><input type='radio' name='q21' onclick="choose(21,'D','D')">D. balanced</label>
+<label id='l_21_A'><input type='radio' name='q21' onclick="choose(21,'A','D')">A. sugary</label>
+<label id='l_21_B'><input type='radio' name='q21' onclick="choose(21,'B','D')">B. fatty</label>
+<div class='exp' id='exp_21'><b>Đáp án đúng:</b> D<br></div></div>
+<div class='q' id='q22'><b>CÂU 142: The endocrinologist adjusted the patient’s _______ dosage.</b>
+<label id='l_22_A'><input type='radio' name='q22' onclick="choose(22,'A','D')">A. oxygen</label>
+<label id='l_22_B'><input type='radio' name='q22' onclick="choose(22,'B','D')">B. vaccine</label>
+<label id='l_22_D'><input type='radio' name='q22' onclick="choose(22,'D','D')">D. insulin</label>
+<label id='l_22_C'><input type='radio' name='q22' onclick="choose(22,'C','D')">C. morphine</label>
+<div class='exp' id='exp_22'><b>Đáp án đúng:</b> D<br></div></div>
+<div class='q' id='q23'><b>CÂU 143: The endocrinologist treated the patient’s thyroid _______.</b>
+<label id='l_23_D'><input type='radio' name='q23' onclick="choose(23,'D','C')">D. donation</label>
+<label id='l_23_B'><input type='radio' name='q23' onclick="choose(23,'B','C')">B. digestion</label>
+<label id='l_23_A'><input type='radio' name='q23' onclick="choose(23,'A','C')">A. detection</label>
+<label id='l_23_C'><input type='radio' name='q23' onclick="choose(23,'C','C')">C. disorder</label>
+<div class='exp' id='exp_23'><b>Đáp án đúng:</b> C<br></div></div>
+<div class='q' id='q24'><b>CÂU 144: The surgeon used a laser for precise tissue _______.</b>
+<label id='l_24_D'><input type='radio' name='q24' onclick="choose(24,'D','A')">D. swelling</label>
+<label id='l_24_B'><input type='radio' name='q24' onclick="choose(24,'B','A')">B. injection</label>
+<label id='l_24_C'><input type='radio' name='q24' onclick="choose(24,'C','A')">C. replacement</label>
+<label id='l_24_A'><input type='radio' name='q24' onclick="choose(24,'A','A')">A. removal</label>
+<div class='exp' id='exp_24'><b>Đáp án đúng:</b> A<br></div></div>
+<div class='q' id='q25'><b>CÂU 145: The patient will be _______ for 24 hours after surgery.</b>
+<label id='l_25_C'><input type='radio' name='q25' onclick="choose(25,'C','D')">C. monitor</label>
+<label id='l_25_A'><input type='radio' name='q25' onclick="choose(25,'A','D')">A. record</label>
+<label id='l_25_D'><input type='radio' name='q25' onclick="choose(25,'D','D')">D. monitored</label>
+<label id='l_25_B'><input type='radio' name='q25' onclick="choose(25,'B','D')">B. recording</label>
+<div class='exp' id='exp_25'><b>Đáp án đúng:</b> D<br></div></div>
+<div class='q' id='q26'><b>CÂU 146: The patient was advised to avoid _______ food after stomach surgery.</b>
+<label id='l_26_A'><input type='radio' name='q26' onclick="choose(26,'A','C')">A. sweet</label>
+<label id='l_26_D'><input type='radio' name='q26' onclick="choose(26,'D','C')">D. cold</label>
+<label id='l_26_C'><input type='radio' name='q26' onclick="choose(26,'C','C')">C. spicy</label>
+<label id='l_26_B'><input type='radio' name='q26' onclick="choose(26,'B','C')">B. soft</label>
+<div class='exp' id='exp_26'><b>Đáp án đúng:</b> C<br></div></div>
+<div class='q' id='q27'><b>CÂU 147: The patient was placed in _______ care after suffering a major stroke.</b>
+<label id='l_27_A'><input type='radio' name='q27' onclick="choose(27,'A','D')">A. preventive</label>
+<label id='l_27_D'><input type='radio' name='q27' onclick="choose(27,'D','D')">D. palliative</label>
+<label id='l_27_B'><input type='radio' name='q27' onclick="choose(27,'B','D')">B. elective</label>
+<label id='l_27_C'><input type='radio' name='q27' onclick="choose(27,'C','D')">C. cosmetic</label>
+<div class='exp' id='exp_27'><b>Đáp án đúng:</b> D<br></div></div>
+<div class='q' id='q28'><b>CÂU 148: The doctor diagnosed the patient with high _______.</b>
+<label id='l_28_C'><input type='radio' name='q28' onclick="choose(28,'C','C')">C. blood pressure</label>
+<label id='l_28_B'><input type='radio' name='q28' onclick="choose(28,'B','C')">B. blood sugar</label>
+<label id='l_28_A'><input type='radio' name='q28' onclick="choose(28,'A','C')">A. blood type</label>
+<label id='l_28_D'><input type='radio' name='q28' onclick="choose(28,'D','C')">D. blood group</label>
+<div class='exp' id='exp_28'><b>Đáp án đúng:</b> C<br></div></div>
+<div class='q' id='q29'><b>CÂU 149: A patient with chronic renal failure may eventually need a kidney _______.</b>
+<label id='l_29_C'><input type='radio' name='q29' onclick="choose(29,'C','C')">C. transplant</label>
+<label id='l_29_D'><input type='radio' name='q29' onclick="choose(29,'D','C')">D. injection</label>
+<label id='l_29_B'><input type='radio' name='q29' onclick="choose(29,'B','C')">B. dressing</label>
+<label id='l_29_A'><input type='radio' name='q29' onclick="choose(29,'A','C')">A. catheter</label>
+<div class='exp' id='exp_29'><b>Đáp án đúng:</b> C<br></div></div>
+<div class='q' id='q30'><b>CÂU 150: The surgeon stitched the wound with _______.</b>
+<label id='l_30_A'><input type='radio' name='q30' onclick="choose(30,'A','D')">A. clamps</label>
+<label id='l_30_D'><input type='radio' name='q30' onclick="choose(30,'D','D')">D. sutures</label>
+<label id='l_30_C'><input type='radio' name='q30' onclick="choose(30,'C','D')">C. gloves</label>
+<label id='l_30_B'><input type='radio' name='q30' onclick="choose(30,'B','D')">B. scissors</label>
+<div class='exp' id='exp_30'><b>Đáp án đúng:</b> D<br></div></div>
+</body></html>
